@@ -46,8 +46,8 @@ Suppliers
 						<label for="ephone">Phone No: </label><br>
 						<input type="text" name="ephone">
 					</p>
-					<label for="add">Address:</label><br>
-						<input type="text" name="add">
+					<label for="addr">Address:</label><br>
+						<input type="text" name="addr">
 				</div>
 				
 			
@@ -65,10 +65,10 @@ Suppliers
 			$ename = mysqli_real_escape_string($conn, $_REQUEST['ename']);
 			$epos = mysqli_real_escape_string($conn, $_REQUEST['epos']);
 			$ephone = mysqli_real_escape_string($conn, $_REQUEST['ephone']);
-			$add = mysqli_real_escape_string($conn, $_REQUEST['add']);
+			$addr = mysqli_real_escape_string($conn, $_REQUEST['addr']);
 
 			 
-			$sql = "INSERT INTO employees VALUES ($eid, '$ename','$epos','$add','$ephone')";
+			$sql = "INSERT INTO employees VALUES ($eid, '$ename','$epos','$addr',$ephone)";
 			if(mysqli_query($conn, $sql)){
 				echo "<p style='font-size:8;'>Employee details successfully added!</p>";
 			} else{
