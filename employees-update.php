@@ -9,6 +9,24 @@
 			$row = $result -> fetch_row();
 		}
 ?>
+<?php
+            if(isset($_POST['update'])) {
+                $id = $_POST['eid'];
+                $name = $_POST['ename'];
+				$epos = $_POST['epos'];
+				$ephone = $_POST['ephone'];
+				$addr = $_POST['addr'];
+
+				         
+                $sql="UPDATE employees SET E_NAME='$name',E_POS='$epos',E_PHONE=$ephone,E_ADDRESS='$addr' WHERE EMP_ID='$id'";
+                
+                if ($conn->query($sql)) {
+                    header("location:employees-view.php");
+                } else {
+                    echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
+                }
+            }
+            ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,11 +64,11 @@ Suppliers
                     </p>
 					<p>
                         <label for="ephone">Phone no:</label><br>
-                        <input type="number" name="ephone" value="<?php echo $row[3]; ?>">
+                        <input type="number" name="ephone" value="<?php echo $row[4]; ?>">
                     </p>
 					<p>
-                        <label for="add">Address:</label><br>
-                        <input type="text" name="add" value="<?php echo $row[4]; ?>">
+                        <label for="addr">Address:</label><br>
+                        <input type="text" name="addr" value="<?php echo $row[3]; ?>">
                     </p>
 
 					<p>
@@ -61,24 +79,7 @@ Suppliers
                 
             </form>
             
-            <?php
-            if(isset($_POST['update'])) {
-                $id = $_POST['eid'];
-                $name = $_POST['ename'];
-				$epos = $_POST['epos'];
-				$ephone = $_POST['ephone'];
-				$add = $_POST['add'];
-
-				         
-                $sql="UPDATE employees SET E_NAME='$name',E_POS='$epos',E_PHONE='$ephone',E_ADDRESS='$add' WHERE EMP_ID='$id'";
-                
-                if ($conn->query($sql)) {
-                    header("location:employees-view.php");
-                } else {
-                    echo "<p style='font-size:8; color:red;'>Error! Unable to update.</p>";
-                }
-            }
-            ?>
+            
 		</div>
 	</div>
 
